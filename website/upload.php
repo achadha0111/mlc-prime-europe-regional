@@ -40,6 +40,9 @@ if ($uploadOk == 0) {
         $python = 'python objectrecognition.py uploads/' . basename($_FILES["fileToUpload"]["name"]);
         $result = shell_exec($python . " 2>&1");
         echo $result;
+        echo '<div class="loader"></div>';
+        $_SESSION["image_filename"] = $_FILES["fileToUpload"]["name"];
+        header("Location: index.php");
 
     } else {
         echo "Sorry, there was an error uploading your file.";
