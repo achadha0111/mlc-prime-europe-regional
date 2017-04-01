@@ -9,7 +9,9 @@ headers = {
 
 body = []
 
-with open('pets.jpg', 'rb') as imageFile:
+filepath = sys.argv[1]
+
+with open(filepath, 'rb') as imageFile:
 	image = imageFile.read()
 	bytesArray = bytearray(image)
 	body = bytesArray
