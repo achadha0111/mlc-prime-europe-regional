@@ -1,27 +1,17 @@
-import httplib, urllib, base64
-import json
+import clarifai
+from clarifai.rest import ClarifaiApp
 import sys
+import json
 
-headers = {
-    'Content-Type': 'application/octet-stream',
-    'Ocp-Apim-Subscription-Key': '18b89d07773340b2887453e6d7fc36b1',
-}
+app = ClarifaiApp("FTWDbLfHgAzJU2Bwax1uhopFOZ854Xz5xI3C9HG5", "C3x_RcA0XU3yBGmqY8Lu3SkOkA7ga9Llzczs0KEI")
+filename = sys.argv[1]
+concepts = []
 
-body = []
+model = app.models.get("general-v1.3")
+dataJSON = model.predict_by_filename(filename)
+for output in dataJSON['outputs']:
+	for concept in output['data']['concepts']:
+		concepts.append(concept['name'])
 
-filepath = sys.argv[1]
+print concepts
 
-with open(filepath, 'rb') as imageFile:
-	image = imageFile.read()
-	bytesArray = bytearray(image)
-	body = bytesArray
-
-try:
-    conn = httplib.HTTPSConnection('westus.api.cognitive.microsoft.com')
-    conn.request("POST", "/vision/v1.0/tag", body, headers)
-    response = conn.getresponse()
-    data = json.loads(response.read().decode('utf-8'))
-    print(data)
-    conn.close()
-except Exception as e:
-    print("[Errno {0}] {1}".format(e.errno, e.strerror))
