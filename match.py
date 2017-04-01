@@ -14,8 +14,18 @@ for item in data:
         if len(a) > max:
             max = len(a)
             descriptionOfMax = item['description']
+
+delimiters = ['\n', ' ', ',', '.', '?', '!', ':']
+length = 0
+seed = ''
+for c in descriptionOfMax:
+    seed += c
+    length += 1
+    if c in delimiters and length > 100:
+        break
+
 data =[]
-data.append(descriptionOfMax)
+data.append(seed)
 with open('matchResult.json', 'w') as outfile:
   json.dump(data,outfile,sort_keys = True, indent = 2)
-print data
+
