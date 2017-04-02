@@ -1,3 +1,4 @@
+#!/usr/bin/python
 import clarifai
 from clarifai.rest import ClarifaiApp
 import sys
@@ -13,5 +14,6 @@ for output in dataJSON['outputs']:
 	for concept in output['data']['concepts']:
 		concepts.append(concept['name'])
 
-print concepts
+with open('image.json', 'a') as f:
+        f.write(concepts) 
 

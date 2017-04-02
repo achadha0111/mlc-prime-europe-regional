@@ -21,7 +21,8 @@ try:
     conn.request("POST", "/vision/v1.0/tag", body, headers)
     response = conn.getresponse()
     data = json.loads(response.read().decode('utf-8'))
-    print(data)
+    with open('tagged-images/image.json', 'a') as f:
+        f.write(data) 
     conn.close()
 except Exception as e:
     print("[Errno {0}] {1}".format(e.errno, e.strerror))
