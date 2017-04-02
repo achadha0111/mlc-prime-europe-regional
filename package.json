@@ -1,0 +1,20 @@
+{
+  "name": "mlh-prime-europe-regional",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/achadha0111/mlh-prime-europe-regional.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/achadha0111/mlh-prime-europe-regional/issues"
+  },
+  "homepage": "https://github.com/achadha0111/mlh-prime-europe-regional#readme"
+}

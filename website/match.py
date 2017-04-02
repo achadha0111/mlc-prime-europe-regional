@@ -3,7 +3,7 @@ import numpy as np
 with open('databaseArt.json') as json_data:
     data = json.load(json_data)
 
-with open('things.json') as json_data:
+with open('image.json') as json_data:
     things = json.load(json_data)
 
 max = -1
@@ -26,6 +26,6 @@ for c in descriptionOfMax:
 
 data =[]
 data.append(seed)
-with open('matchResult.json', 'w') as outfile:
-  json.dump(data,outfile,sort_keys = True, indent = 2)
+with open('rnn/art.txt', 'w') as outfile:
+  outfile.write(" ".join(data))
 

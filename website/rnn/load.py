@@ -64,4 +64,7 @@ for i in range(1000):
 	sys.stdout.write(result)
 	pattern.append(index)
 	pattern = pattern[1:len(pattern)]
+
+with open('/Applications/MAMP/htdocs/mlh-prime-europe-regional/website/description.txt', 'w') as outfile:
+  outfile.write(" ".join(pattern)) 
 print "\nDone."
