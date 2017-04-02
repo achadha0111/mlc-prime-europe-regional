@@ -40,11 +40,9 @@ if ($uploadOk == 0) {
         //echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
         $python = 'python objectrecognition.py uploads/' . basename($_FILES["fileToUpload"]["name"]);
         $result = shell_exec($python . " 2>&1");
-        shell_exec('python match.py tagged-images/image.json 2>&1');
-        shell_exec('python rnn/load.py 2>&1')
-        $myfile = fopen("webdictionary.txt", "r") or die("Unable to open file!");
-        $_SESSION['description'] = fread($myfile,filesize("description.txt"));
-        fclose($myfile);
+        $seed = shell_exec('python match.py 2>&1');
+        $painting_description = shell_exec('python rnn/load.py 2>&1');
+        $_SESSION['description'] = $painting_description;
         $_SESSION["img"] = $_FILES["fileToUpload"]["name"];
         echo $result;
     } else {
